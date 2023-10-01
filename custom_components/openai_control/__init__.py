@@ -177,10 +177,10 @@ class OpenAIAgent(conversation.AbstractConversationAgent):
         # generate the prompt using the prompt_template
         prompt_render = prompt_template.substitute(
             entities=entities_template,
-            prompt=user_input.text
         )
 
-        messages.append({"role": "user", "content": prompt_render})
+        messages.append({"role": "system", "content": prompt_render})
+        messages.append({"role": "user", "content": user_input.text})
 
         _LOGGER.debug("Prompt for %s: %s", model, messages)
 
