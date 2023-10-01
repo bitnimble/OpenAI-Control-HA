@@ -41,3 +41,4 @@ CONF_TEMPERATURE = "temperature"
 DEFAULT_TEMPERATURE = 0.5
 
 CONF_BASE_URL = "base_url"
+DEFAULT_BASE_URL = "http://localhost:11436"
