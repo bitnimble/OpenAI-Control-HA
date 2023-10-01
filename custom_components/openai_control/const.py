@@ -11,8 +11,6 @@ The sections of the string are delimited by the string "<>"
 Entities:
 $entities
 
-Prompt: "$prompt"
-
 JSON Template: { "entities": [ { "id": "", "action": "" } ], "assistant": "" }
 
 Determine if the above prompt is a command related to the above entities. Respond only in JSON.
@@ -29,7 +27,7 @@ CONF_PROMPT = "prompt"
 DEFAULT_PROMPT = """This smart home is controlled by Home Assistant."""
 
 CONF_CHAT_MODEL = "chat_model"
-DEFAULT_CHAT_MODEL = "gpt-3.5-turbo"
+DEFAULT_CHAT_MODEL = "llama2"
 
 CONF_MAX_TOKENS = "max_tokens"
 DEFAULT_MAX_TOKENS = 250
