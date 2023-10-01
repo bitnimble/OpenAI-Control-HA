@@ -22,11 +22,13 @@ from homeassistant.helpers.selector import (
 )
 
 from .const import (
+    CONF_BASE_URL,
     CONF_CHAT_MODEL,
     CONF_MAX_TOKENS,
     CONF_PROMPT,
     CONF_TEMPERATURE,
     CONF_TOP_P,
+    DEFAULT_BASE_URL,
     DEFAULT_CHAT_MODEL,
     DEFAULT_MAX_TOKENS,
     DEFAULT_PROMPT,
@@ -45,6 +47,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 DEFAULT_OPTIONS = types.MappingProxyType(
     {
+        CONF_BASE_URL: DEFAULT_BASE_URL,
         CONF_PROMPT: DEFAULT_PROMPT,
         CONF_CHAT_MODEL: DEFAULT_CHAT_MODEL,
         CONF_MAX_TOKENS: DEFAULT_MAX_TOKENS,
@@ -60,7 +63,8 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> None:
     Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
     """
     openai.api_key = data[CONF_API_KEY]
-    await hass.async_add_executor_job(partial(openai.Engine.list, request_timeout=10))
+    openai.api_base = data[CONF_BASE_URL]
+    await hass.async_add_executor_job(partial(openai.Model.list))
 
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
