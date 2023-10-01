@@ -22,6 +22,7 @@ from homeassistant.helpers import intent, template, entity_registry
 from homeassistant.util import ulid
 
 from .const import (
+    CONF_BASE_URL,
     CONF_CHAT_MODEL,
     CONF_MAX_TOKENS,
     CONF_PROMPT,
