@@ -44,6 +44,7 @@ prompt_template = Template(PROMPT_TEMPLATE)
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up OpenAI Agent from a config entry."""
     openai.api_key = entry.data[CONF_API_KEY]
+    openai.api_base = entry.data[CONF_BASE_URL]
 
     try:
         await hass.async_add_executor_job(
